@@ -1,0 +1,1 @@
+<div class='container box'>Количество страниц: <?php //$count ?></div>
