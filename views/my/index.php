@@ -18,7 +18,6 @@ echo $form->field($model, 'pdf')->fileInput()->label('Файл');
 echo Html::submitButton('Отправить файл', ['class' => 'btn btn-success in']);
 ActiveForm::end();
 ?>
-<a href="<?=Url::to(['my/gallery']);?>">ПРиет</a>
 
 
 

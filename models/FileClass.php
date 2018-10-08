@@ -24,12 +24,13 @@ class FileClass extends Model
             [['pdf'], 'file'],
         ];
     }*/
-    public static function inite() {
+    public function initFile() {
         //Буферизация для сохранения этого файла
         ob_start();
         //Генерируем имя папки
         $this->nameDir = rand(0, 10000000);
-        //mkdir($this->nameDir);
+        //echo $this->nameDir;
+        mkdir($this->nameDir);
     }
     public function getCountPages($fileTempName)
     {
