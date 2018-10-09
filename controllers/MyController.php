@@ -9,33 +9,27 @@ use yii\web\UploadedFile;
 
 class MyController extends Controller
 {
-    private $countPages;
-    private $model;
     public function actionIndex()
     {
-        $this->model = new FileClass();
-
-
-        //echo $this->countPages;
-        /*if (Yii::$app->request->isPost) {
-            $model->pdf = UploadedFile::getInstance($model, 'pdf');
-            if ($model->pdf && $model->validate()) {
-                //$model->pdf->saveAs(Yii::getAlias('@webroot/').$model->pdf->name);
-                return $model->getCountPages($model->pdf->tempName);//$model->getCountPages(
-            }
-        }*/
+        $model = new FileClass();
+        //$model->pdf->saveAs(Yii::getAlias('@webroot/').$model->pdf->name);
         return $this->render('index', [
-            'model' => $this->model,
+            'model' => $model,
         ]);
     }
     public function actionGallery() {
-        //$this->model = new FileClass();
-        var_dump($this -> model);
-        $this->model -> initFile();
-        $this->countPages = $this->model->getCountPages($this->model->pdf->tempName);
-        //print_r($model);
-        //$count = $model -> getCountPages($model->pdf->tempName);
-        //echo $count;
-        return $this->render('gallery');
+        //$this->model -> initFile();
+        $model = new FileClass();
+        //$model->load(Yii::$app->getRequest()->post());
+        if (Yii::$app->request->isPost) {
+            $model->pdf = UploadedFile::getInstance($model, 'pdf');
+            //if ($model->pdf && $model->validate()) {
+                //$model->pdf->baseName;
+            //}
+        }
+        return $this->render('gallery',
+            //['model' => $model->printM()],
+            ['count' => $model->getCountPages($model->pdf->tempName)]
+        );
     }
 }
