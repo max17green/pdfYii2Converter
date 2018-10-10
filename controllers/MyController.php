@@ -19,6 +19,7 @@ class MyController extends Controller
 
     public function actionGallery()
     {
+
         $model = new FileClass();
         if (Yii::$app->request->isPost) {
             $model->pdf = UploadedFile::getInstance($model, 'pdf');
@@ -26,13 +27,12 @@ class MyController extends Controller
                 $model->initFile();
                 $model->getWidthHeight($model->pdf->tempName);
                 $model->generateImages($model->pdf->tempName);
+                $this->view->params['nameDir'] = $model->getNameDir();
             }
             return $this->render('gallery', array(
                 'count' => $model->getCountPages($model->pdf->tempName),
-                    'images' => $model->printImages()
+                'images' => $model->printImages()
                 ));
-                //['count' => $model->getCountPages($model->pdf->tempName)]//,
-                //['images' => $model->printImages()]
 
         }//if ($model->pdf && $model->validate())
     }

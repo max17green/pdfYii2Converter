@@ -82,4 +82,9 @@ class FileClass extends Model
         }
         return $str;
     }
+    public function getNameDir() {
+        return $this->nameDir;
+    }
+
+
 }

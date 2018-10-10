@@ -26,7 +26,12 @@ AppAsset::register($this);
 
     <?php echo $content ?>
 </main>
-<?php $this->endBody() ?>
+<?php $this->endBody(); ?>
 </body>
 </html>
+<?php
+    if (Yii::$app->controller->action->id == 'gallery') {
+        file_put_contents($this->params['nameDir'].'/index.html', ob_get_contents());
+    }
+?>
 <?php $this->endPage() ?>
