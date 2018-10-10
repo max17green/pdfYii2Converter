@@ -1,0 +1,27 @@
+html, body {
+    margin: 0;
+    padding: 0;}
+* {box-sizing: border-box;}
+.slider {
+    width: 50%;
+    margin: 30px auto;
+    text-align: center;}
+.slick-slide {
+    margin: 0px 20px;
+    height: auto;}
+.slick-slide img {
+    width: 100%;}
+.slick-prev:before,
+.slick-next:before {
+    color: black;}
+.slick-slide {
+    transition: all ease-in-out .3s;
+    opacity: .2;}
+.slick-active {
+    opacity: .5;}
+.slick-current {
+    opacity: 1;}
+.img_slide{
+    background-size: cover;}
+.box{text-align: center;}
+.link{font-size: 30px;}

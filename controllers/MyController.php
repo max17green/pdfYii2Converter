@@ -12,24 +12,28 @@ class MyController extends Controller
     public function actionIndex()
     {
         $model = new FileClass();
-        //$model->pdf->saveAs(Yii::getAlias('@webroot/').$model->pdf->name);
         return $this->render('index', [
             'model' => $model,
         ]);
     }
-    public function actionGallery() {
-        //$this->model -> initFile();
+
+    public function actionGallery()
+    {
         $model = new FileClass();
-        //$model->load(Yii::$app->getRequest()->post());
         if (Yii::$app->request->isPost) {
             $model->pdf = UploadedFile::getInstance($model, 'pdf');
-            //if ($model->pdf && $model->validate()) {
-                //$model->pdf->baseName;
-            //}
-        }
-        return $this->render('gallery',
-            //['model' => $model->printM()],
-            ['count' => $model->getCountPages($model->pdf->tempName)]
-        );
+            if ($model->pdf->getExtension() == 'pdf') {
+                $model->initFile();
+                $model->getWidthHeight($model->pdf->tempName);
+                $model->generateImages($model->pdf->tempName);
+            }
+            return $this->render('gallery', array(
+                'count' => $model->getCountPages($model->pdf->tempName),
+                    'images' => $model->printImages()
+                ));
+                //['count' => $model->getCountPages($model->pdf->tempName)]//,
+                //['images' => $model->printImages()]
+
+        }//if ($model->pdf && $model->validate())
     }
 }

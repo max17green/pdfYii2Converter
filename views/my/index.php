@@ -14,8 +14,6 @@ $form = ActiveForm::begin([
         'action'  => ['my/gallery']
     ]);
 echo $form->field($model, 'pdf')->fileInput()->label('Файл');
-
-//echo $form->field($model, 'par1');
 echo Html::submitButton('Отправить файл', ['class' => 'btn btn-success in']);
 ActiveForm::end();
 ?>

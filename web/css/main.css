@@ -13,12 +13,13 @@ body {
   width: 100%;
   height: 100%;
   background: white;
+  background-color: #afb4bc;
   opacity: .5; }
 
 main {
   text-align: center;
   width: 100%;
-  position: absolute; }
+  position: absolute;}
 form{
   display: flex;
   justify-content: center;
