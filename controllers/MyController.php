@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use app\models\FileClass;
 use app\models\ZipClass;
+use app\models\RestApiClass;
 use yii\web\UploadedFile;
 
 class MyController extends Controller
@@ -46,5 +47,14 @@ class MyController extends Controller
                 }
             }
         }
+    }
+    public function actionRest() {
+        $this->layout = '@app/views/layouts/rest.php';
+        $model = new RestApiClass();
+        $model->setAttributes(Yii::$app->request->get());
+        $model->validate();
+        return $this->render('rest',
+            ['rest' => $model->getRestApi()]
+        );
     }
 }
