@@ -7,7 +7,6 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 $form = ActiveForm::begin([
         'options' => ['enctype' => 'multipart/form-data'],

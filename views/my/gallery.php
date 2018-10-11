@@ -1,7 +1,9 @@
 <?php
-$this->registerCssFile('/web/slick/slick.css');
-$this->registerCssFile('/web/slick/slick-theme.css');
-$this->registerCssFile('/web/slick/slick-user.css');
+use yii\helpers\Url;
+
+//$this->registerCssFile('/web/slick/slick.css');
+//$this->registerCssFile('/web/slick/slick-theme.css');
+//$this->registerCssFile('/web/slick/slick-user.css');
 if (isset($count)) {
     echo "<div class='container box'>Количество страниц: {$count}</div>";
 } else {
@@ -12,10 +14,10 @@ if (isset($count)) {
     <?= $images ?>
 </section>
 <div class="container box">
-    <a href="zip.php?name=" class="link">Скачать</a>
+    <a href="<?= Url::to(['my/zip', 'nameDir' => $this->params['nameDir']]) ?>" class="link">Скачать</a>
 </div>
 <?php
-    $this->registerJsFile('/vendor/components/jquery/jquery.min.js');
-    $this->registerJsFile('/web/slick/slick.js');
-    $this->registerJsFile('/web/slick/slick-user.js');
+    //$this->registerJsFile('/vendor/components/jquery/jquery.min.js');
+    //$this->registerJsFile('/web/slick/slick.js');
+    //$this->registerJsFile('/web/slick/slick-user.js');
 ?>

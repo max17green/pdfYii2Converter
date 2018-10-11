@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\FileClass;
+use app\models\ZipClass;
 use yii\web\UploadedFile;
 
 class MyController extends Controller
@@ -19,7 +20,6 @@ class MyController extends Controller
 
     public function actionGallery()
     {
-
         $model = new FileClass();
         if (Yii::$app->request->isPost) {
             $model->pdf = UploadedFile::getInstance($model, 'pdf');
@@ -33,7 +33,18 @@ class MyController extends Controller
                 'count' => $model->getCountPages($model->pdf->tempName),
                 'images' => $model->printImages()
                 ));
-
         }//if ($model->pdf && $model->validate())
+    }
+    public function actionZip() {
+        $model = new ZipClass();
+        $model->setAttributes(Yii::$app->request->get());
+        if ($model->validate()) {
+            if ($model->initZip()) {
+                if ($model->create()) {
+                    $model->addIn();
+                    $model->output();
+                }
+            }
+        }
     }
 }

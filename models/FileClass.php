@@ -13,7 +13,6 @@ use yii\base\InvalidConfigException;
 
 class FileClass extends Model
 {
-    //public $par1;
     public $name;
     public $pdf;
     public $countPages;
@@ -85,6 +84,4 @@ class FileClass extends Model
     public function getNameDir() {
         return $this->nameDir;
     }
-
-
 }
