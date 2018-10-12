@@ -7,7 +7,7 @@ use yii\helpers\Url;
 if (isset($count)) {
     echo "<div class='container box'>Количество страниц: {$count}</div>";
 } else {
-   echo "<div class='container'>Вы можете загружать только файлы с расширением pdf.</div>";
+    echo "<div class='container'>Вы можете загружать только файлы с расширением pdf.</div>";
 }
 ?>
 <section class="lazy slider" data-sizes="50vw">

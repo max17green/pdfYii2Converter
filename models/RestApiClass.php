@@ -10,7 +10,6 @@ namespace app\models;
 
 use yii\base\Model;
 
-
 class RestApiClass extends Model
 {
     public $nameDir;
@@ -22,18 +21,18 @@ class RestApiClass extends Model
     }
     public function getRestApi()
     {
-            if (file_exists($this->nameDir)) {
-                $path = $this->nameDir."/images";
-                $files = scandir($path);
-                //print_r($files);
-                foreach ($files as $file) {
-                    if ($file == '.' || $file == '..' || is_dir($path . $file)) {
-                        continue;
-                    } else {
-                        $arr[] = $path."/".$file;
-                    }
+        if (file_exists($this->nameDir)) {
+            $path = $this->nameDir."/images";
+            $files = scandir($path);
+            //print_r($files);
+            foreach ($files as $file) {
+                if ($file == '.' || $file == '..' || is_dir($path . $file)) {
+                    continue;
+                } else {
+                    $arr[] = $path."/".$file;
                 }
-                return json_encode($arr);
             }
+            return json_encode($arr);
+        }
     }
 }

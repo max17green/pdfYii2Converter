@@ -36,7 +36,8 @@ class MyController extends Controller
                 ));
         }//if ($model->pdf && $model->validate())
     }
-    public function actionZip() {
+    public function actionZip()
+    {
         $model = new ZipClass();
         $model->setAttributes(Yii::$app->request->get());
         if ($model->validate()) {
@@ -48,12 +49,14 @@ class MyController extends Controller
             }
         }
     }
-    public function actionRest() {
+    public function actionRest()
+    {
         $this->layout = '@app/views/layouts/rest.php';
         $model = new RestApiClass();
         $model->setAttributes(Yii::$app->request->get());
         $model->validate();
-        return $this->render('rest',
+        return $this->render(
+            'rest',
             ['rest' => $model->getRestApi()]
         );
     }

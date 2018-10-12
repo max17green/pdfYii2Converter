@@ -7,6 +7,7 @@
  */
 
 namespace app\models;
+
 use yii\base\Model;
 use yii\web\UploadedFile;
 use yii\base\InvalidConfigException;
@@ -26,7 +27,8 @@ class FileClass extends Model
             [['pdf'], 'file'],
         ];
     }
-    public function initFile() {
+    public function initFile()
+    {
         //Буферизация для сохранения этого файла
         ob_start();
         //Генерируем имя папки
@@ -81,7 +83,8 @@ class FileClass extends Model
         }
         return $str;
     }
-    public function getNameDir() {
+    public function getNameDir()
+    {
         return $this->nameDir;
     }
 }
